@@ -1,0 +1,6 @@
+@Strapi.Backend.Demo.Api_HostAddress = http://localhost:5095
+
+GET {{Strapi.Backend.Demo.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
