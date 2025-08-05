@@ -14,4 +14,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Strapi.Backend.Demo.Services\Strapi.Backend.Demo.Services.csproj" />
+  </ItemGroup>
+
 </Project>

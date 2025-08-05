@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Strapi.Backend.Demo.Api;
-using Strapi.Backend.Demo.Api.Interfaces;
-using Strapi.Backend.Demo.Api.Services;
+using Strapi.Backend.Demo.Services.Interfaces;
+using Strapi.Backend.Demo.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +11,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configure dependencies for services
-builder.Services.AddHttpClient<IArticleService, ArticleService>();
+builder.Services.AddHttpClient<IArticleService, ArticleService>(client =>
+{
+    var baseUrl = builder.Configuration["Strapi:BaseUrl"] ?? "http://localhost:1337/api/";
+    client.BaseAddress = new Uri(baseUrl);
+});
+
 builder.Configuration.AddEnvironmentVariables();
 
 

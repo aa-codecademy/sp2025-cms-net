@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36221.1 d17.14
+VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strapi.Backend.Demo.Api", "Strapi.Backend.Demo.Api\Strapi.Backend.Demo.Api.csproj", "{0CA34983-3AD1-4121-A8C2-89E550DFA9A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strapi.Backend.Demo.Services", "Strapi.Backend.Demo.Services\Strapi.Backend.Demo.Services.csproj", "{A34B6B31-BCCF-408E-9825-DCC648F74E5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0CA34983-3AD1-4121-A8C2-89E550DFA9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA34983-3AD1-4121-A8C2-89E550DFA9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA34983-3AD1-4121-A8C2-89E550DFA9A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A34B6B31-BCCF-408E-9825-DCC648F74E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34B6B31-BCCF-408E-9825-DCC648F74E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A34B6B31-BCCF-408E-9825-DCC648F74E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A34B6B31-BCCF-408E-9825-DCC648F74E5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
