@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			registerBtn.style.display = 'none';
 			logoutBtn.style.display = 'inline-block';
 			userInfo.style.display = 'inline-block';
-			userInfo.textContent = `Welcome, ${user.name}!`;
+			userInfo.textContent = `Welcome, ${user.username}!`;
 		} else {
 			// User is not logged in
 			loginBtn.style.display = 'inline-block';
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	async function handleLogin(event) {
 		event.preventDefault();
 
-		const email = document.getElementById('login-email').value;
+		const identifier = document.getElementById('login-email').value;
 		const password = document.getElementById('login-password').value;
 
 		try {
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ email, password }),
+				body: JSON.stringify({ identifier, password }),
 			});
 
 			if (!response.ok) {
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const data = await response.json();
 
 			// Store auth data
-			localStorage.setItem('authToken', data.accessToken);
+			localStorage.setItem('authToken', data.jwt);
 			localStorage.setItem('user', JSON.stringify(data.user));
 
 			// Update UI
