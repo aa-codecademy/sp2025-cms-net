@@ -27,6 +27,12 @@ builder.Services.AddHttpClient<IArticleService, ArticleService>(client =>
     client.BaseAddress = new Uri(baseUrl);
 });
 
+builder.Services.AddHttpClient<IAuthService, AuthService>(client =>
+{
+    var baseUrl = builder.Configuration["Strapi:BaseUrl"] ?? "http://localhost:1337/api/";
+    client.BaseAddress = new Uri(baseUrl);
+});
+
 builder.Configuration.AddEnvironmentVariables();
 
 
