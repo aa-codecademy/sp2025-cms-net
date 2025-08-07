@@ -21,19 +21,19 @@ public static class ApiConfig
           .WithDisplayName("GetArticleById");
 
 
-        app.MapPost("/articles", async (CreateArticleDto dto, IArticleService service) =>
+        app.MapPost("/api/articles", async (CreateArticleDataDto dto, IArticleService service) =>
         {
             var result = await service.CreateArticleAsync(dto);
             return Results.Ok(result);
         });
 
-        app.MapPut("/articles/{articleId}", async (string articleId, UpdateArticleDto dto, IArticleService service) =>
+        app.MapPut("/api/articles/{articleId}", async (string articleId, UpdateArticleDto dto, IArticleService service) =>
         {
             var result = await service.UpdateArticleAsync(articleId, dto);
             return Results.Ok(result);
         });
 
-        app.MapDelete("/articles/{articleId}", async (string articleId, IArticleService service) =>
+        app.MapDelete("/api/articles/{articleId}", async (string articleId, IArticleService service) =>
         {
             var success = await service.DeleteArticleAsync(articleId);
             return success ? Results.NoContent() : Results.NotFound();

@@ -6,7 +6,7 @@ public interface IArticleService
 {
     Task<ResponseDto<List<ArticleDto>>> GetArticlesAsync();
     Task<ResponseDto<ArticleDto?>> GetArticleByIdAsync(string id);
-    Task<ResponseDto<ArticleDto>> CreateArticleAsync(CreateArticleDto dto);
+    Task<ResponseDto<ArticleDto>> CreateArticleAsync(CreateArticleDataDto dto);
     Task<ResponseDto<ArticleDto>> UpdateArticleAsync(string articleId, UpdateArticleDto dto);
     Task<bool> DeleteArticleAsync(string articleId);
 }

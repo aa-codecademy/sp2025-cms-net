@@ -29,22 +29,50 @@ public class ArticleService : IArticleService
         return result;
     }
 
-    public async Task<ResponseDto<ArticleDto>> CreateArticleAsync(CreateArticleDto dto)
+    public async Task<ResponseDto<ArticleDto>> CreateArticleAsync(CreateArticleDataDto dto)
     {
-        var json = JsonSerializer.Serialize(dto);
-        var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+        try
+        {
+            var json = JsonSerializer.Serialize(dto);
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-        var request = await _httpClient.PostAsync("articles", content);
-        var resp = await request.Content.ReadAsStringAsync();
+            var request = await _httpClient.PostAsync("articles", content);
+            var resp = await request.Content.ReadAsStringAsync();
 
-        var result = JsonSerializer.Deserialize<ResponseDto<ArticleDto>>(resp);
-        return result;
+            var result = JsonSerializer.Deserialize<ResponseDto<ArticleDto>>(resp);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
     }
 
     public async Task<ResponseDto<ArticleDto>> UpdateArticleAsync(string articleId, UpdateArticleDto dto)
     {
-        var response = await _httpClient.PutAsJsonAsync($"articles/{articleId}", dto);
+        var existingArticle = await GetArticleByIdAsync(articleId);
+
+        if (existingArticle?.Data == null)
+        {
+            return new ResponseDto<ArticleDto>
+            {
+                Data = null,
+                ErrorMessage = $"Article with ID {articleId} not found."
+            };
+        }
+
+        var data = new UpdateArticleDataDto 
+        { 
+            Article = dto 
+        };
+        data.Article.DatePosted = existingArticle.Data.DatePosted;
+
+        var json = JsonSerializer.Serialize(data);
+        var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+        var response = await _httpClient.PutAsync($"articles/{articleId}", content);
         var resp = await response.Content.ReadAsStringAsync();
+
         var result = JsonSerializer.Deserialize<ResponseDto<ArticleDto>>(resp);
         return result;
     }

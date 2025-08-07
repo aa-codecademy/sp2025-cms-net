@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const articlesContainer = document.getElementById('articles-container');
-	const BACKEND_URL = 'http://localhost:3000/api'; // Your NestJS backend URL
+	const BACKEND_URL = 'https://localhost:7103/api'; // Your NestJS backend URL
 
 	// Auth elements
 	const loginBtn = document.getElementById('login-btn');

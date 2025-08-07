@@ -1,9 +1,20 @@
-using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Strapi.Backend.Demo.Services.Dtos;
 public class UpdateArticleDto
 {
-    public string Title { get; set; } = string.Empty;
-    public string Content { get; set; } = string.Empty;
-    public DateTime UpdatedAt { get; set; } = DateTime.Now;
+    [JsonPropertyName("articleId")]
+    public int ArticleId { get; set; }
+    
+    [JsonPropertyName("title")]
+    public string Title { get; set; } = string.Empty;    
+    
+    [JsonPropertyName("datePosted")]
+    public DateTime DatePosted { get; set; }
+}
+
+public class UpdateArticleDataDto
+{
+    [JsonPropertyName("data")]
+    public UpdateArticleDto Article { get; set; }
 }
